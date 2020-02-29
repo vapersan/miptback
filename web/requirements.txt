@@ -1,3 +1,5 @@
+django-filter
+djangorestframework
 asgiref==3.2.3
 Django==3.0.3
 numpy==1.18.1
