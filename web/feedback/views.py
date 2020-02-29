@@ -8,13 +8,20 @@ aliceSession = {}
 
 
 def alice_skill(request):
-    req_json = json.loads(request.body)
+    try:
+        req_json = json.loads(request.body)
+    except Exception:
+        req_json = {'version': 1, 'session': 1}
+    print(request.body)
+    print(request.POST)
+    print(request.GET)
+    print(request.method)
     response = {
         "version": req_json['version'],
         "session": req_json['session'],
         "response": {
             "end_session": True,
-            'text': 'Pong'
+            'text': 'Привет :D'
         }
     }
-    return JsonResponse(response, ensure_ascii=False)
+    return JsonResponse(response)
