@@ -68,6 +68,24 @@ def json_resp_api_1(request):
         'Мать': '***',
     }
     return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def json_resp_api_2(request):
+    response_data = {
+        'Уровень образования': 'Бакалавр',
+        'Курс': '1',
+        'Подразделение': 'Физтех-школа Аэрокосмических Технологий',
+        'Группа': 'Б03-908б',
+        'Направление': 'Системный анализ и управление (бакалавриат)',
+        'Программа': 'Теория и математические методы системного анализа',
+        'Форма оплаты обучения': 'Минестерство образования РФ',
+        'Базовая кафедра': ' ',
+        'Научный руководтель': ' ',
+        'Тема дипломной работы': ' ',
+    }
+    return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
 def get_monthly_event(request):
     ret = []
     teachers = Teacher.objects.all()
@@ -86,17 +104,3 @@ def save_monthly_event(request):
     pass
 
 
-def json_resp_api_2(request):
-    response_data = {
-        'Уровень образования': 'Бакалавр',
-        'Курс': '1',
-        'Подразделение': 'Физтех-школа Аэрокосмических Технологий',
-        'Группа': 'Б03-908б',
-        'Направление': 'Системный анализ и управление (бакалавриат)',
-        'Программа': 'Теория и математические методы системного анализа',
-        'Форма оплаты обучения': 'Минестерство образования РФ',
-        'Базовая кафедра': ' ',
-        'Научный руководтель': ' ',
-        'Тема дипломной работы': ' ',
-    }
-    return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
