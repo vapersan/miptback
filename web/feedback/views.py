@@ -26,4 +26,4 @@ def alice_skill(request):
             'text': 'Привет :D'
         }
     }
-    return JsonResponse(response, ensure_ascii=False)
+    return JsonResponse(response, json_dumps_params={'ensure_ascii': False})
