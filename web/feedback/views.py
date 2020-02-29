@@ -3,10 +3,12 @@ import json
 from django.http import JsonResponse
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 
 aliceSession = {}
 
 
+@csrf_exempt
 def alice_skill(request):
     try:
         req_json = json.loads(request.body)
@@ -24,4 +26,4 @@ def alice_skill(request):
             'text': 'Привет :D'
         }
     }
-    return JsonResponse(response)
+    return JsonResponse(response, ensure_ascii=False)
