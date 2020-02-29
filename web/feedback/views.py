@@ -40,3 +40,5 @@ def alice_skill(request):
             response['response']['end_session'] = True
     aliceSession[uid] = aliceSession[uid] % 2
     return JsonResponse(response, json_dumps_params={'ensure_ascii': False})
+
+

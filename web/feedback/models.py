@@ -7,8 +7,30 @@ from django.db import models
 #     pass
 
 
-# class Teacher(models.Model):
-#     pass
+class Teacher(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Questions(models.Model):
+    question = models.TextField(max_length=200)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Answers(models.Model):
+    answer = models.TextField(null=True, blank=True)
+    question = models.ForeignKey(Questions, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+#####################
+
 
 class Feedback(models.Model):
     class Meta:
