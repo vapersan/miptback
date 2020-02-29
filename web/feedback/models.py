@@ -19,7 +19,7 @@ class Questions(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.question
 
 
 class Answers(models.Model):
@@ -27,7 +27,8 @@ class Answers(models.Model):
     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.answer
+
 
 #####################
 

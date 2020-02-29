@@ -4,7 +4,7 @@ from django.http import JsonResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
-from feedback.models import Feedback
+from feedback.models import Feedback, Teacher, Questions
 
 aliceSession = {}
 
@@ -42,3 +42,19 @@ def alice_skill(request):
     return JsonResponse(response, json_dumps_params={'ensure_ascii': False})
 
 
+def get_monthly_event(request):
+    ret = []
+    teachers = Teacher.objects.all()
+    for teacher in teachers:
+        dat = {'text': teacher.name, 'pk': teacher.pk, 'quests': []}
+        for quest in Questions.objects.filter(teacher=teacher):
+            dat['quests'].append({
+                'text': quest.question,
+                'pk': quest.id,
+                'name': f"{dat['pk']}:{quest.id}"})
+        ret.append(dat)
+    return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+def save_monthly_event(request):
+    pass
