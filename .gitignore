@@ -370,3 +370,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/vue,vim,node,venv,vuejs,linux,django,python,windows,virtualenv
+/nginx-data/
+/web-data/
