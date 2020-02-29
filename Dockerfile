@@ -5,7 +5,6 @@ MAINTAINER reOiL
 WORKDIR /app
 COPY web/requirements.txt /app
 RUN pip install -r requirements.txt
-RUN mkdir web-data
 COPY web/ /app
 RUN python3 manage.py migrate  
 
