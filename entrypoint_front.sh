@@ -1,3 +1,3 @@
 #!/bin/bash
-cp -r dist/* /shared
+cp -r dist/* /web-data
 echo OK
