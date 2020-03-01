@@ -10,4 +10,4 @@ RUN python3 manage.py migrate
 
 EXPOSE 8000
 
-CMD python3 /app/manage.py collectstatic  && python3 /app/manage.py runserver 0:8000
+ENTRYPOINT ["/app/entry.sh"]
