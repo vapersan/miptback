@@ -23,7 +23,9 @@ class Questions(models.Model):
 
 
 class Answers(models.Model):
-    answer = models.TextField(null=True, blank=True)
+    answer = models.IntegerField(
+        null=False
+    )
     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
 
     def __str__(self):

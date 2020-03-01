@@ -1,10 +1,10 @@
 import json
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
-from feedback.models import Feedback, Teacher, Questions
+from feedback.models import Feedback, Teacher, Questions, Answers
 
 aliceSession = {}
 
@@ -105,7 +105,9 @@ def get_monthly_event(request):
     return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})
 
 
+@csrf_exempt
 def save_monthly_event(request):
-    pass
-
-
+    answers = json.loads(request.body)['data']
+    for k, v in answers.items():
+        Answers(answer=int(v), question_id=int(k.split(':')[1])).save()
+    return HttpResponse(b'OK')
