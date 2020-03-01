@@ -1,0 +1,3 @@
+[submodule "miptfront"]
+	path = miptfront
+	url = git@github.com:vapersan/miptfront.git
