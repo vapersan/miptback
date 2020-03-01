@@ -23,3 +23,9 @@ services:
       - docker.env
     depends_on:
       - web
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    volumes:
+      - ./web-data/:/web-data/

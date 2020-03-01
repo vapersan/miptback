@@ -1,0 +1,17 @@
+FROM node:13-alpine
+
+MAINTAINER reOiL <imidg3001@yandex.ru>
+
+WORKDIR /app
+COPY miptfront/vue/package*.json ./
+
+RUN npm install
+
+COPY miptfront/vue/ /app
+
+RUN apk add --no-cache --upgrade bash
+RUN npm run build
+COPY entrypoint_front.sh /app/entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
