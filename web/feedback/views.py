@@ -1,5 +1,6 @@
 import json
 
+from django.core.serializers import serialize
 from django.http import JsonResponse, HttpResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
@@ -111,3 +112,16 @@ def save_monthly_event(request):
     for k, v in answers.items():
         Answers(answer=int(v), question_id=int(k.split(':')[1])).save()
     return HttpResponse(b'OK')
+
+
+def monthly_get_admin_info(request):
+    ret = []
+    teachers = Teacher.objects.all()
+    for teacher in teachers:
+        dat = {'text': teacher.name, 'pk': teacher.pk, 'answers': []}
+        for i, quest in enumerate(Questions.objects.filter(teacher=teacher)):
+            dat['answers'].append([])
+            for answer in Answers.objects.filter(question=quest):
+                dat['answers'][i].append(answer.answer)
+        ret.append(dat)
+    return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})

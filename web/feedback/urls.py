@@ -10,4 +10,5 @@ urlpatterns = [
     path('api_json_study/', json_resp_api_2),
     path('api/get-monthly-event/', get_monthly_event),
     path('api/save-monthly-event/', save_monthly_event),
+    path('api/monthly-get-admin-info/', monthly_get_admin_info),
 ]
